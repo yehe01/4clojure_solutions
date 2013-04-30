@@ -1,0 +1,4 @@
+/.DS_Store
+/quux/.lein-repl-history
+/quux/target/repl-port
+/quux/target/stale/extract-native.dependencies
