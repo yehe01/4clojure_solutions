@@ -1,5 +1,4 @@
-(ns quux.t-4clojure
-  (:use midje.sweet))
+(ns quux.no150)
 
 (defn palindromic-numbers [n]
   (letfn [(new-p [c newn]

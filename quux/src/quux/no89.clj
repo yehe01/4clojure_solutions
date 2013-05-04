@@ -1,7 +1,4 @@
-(ns quux.t-4clojure
-  (:use midje.sweet))
-
-(unfinished )
+(ns quux.no89)
 
 (def edges [[:a :b] [:a :b] [:a :c] [:c :a]
             [:a :d] [:b :d] [:c :d]])
@@ -56,6 +53,3 @@
       (if (some (fn [node]
                   (if (some #{allnodes}
                             (map set (accessable-paths edges node []))) (do (println node) true) false)) allnodes) true false))))
-
-(ok? [[:a :b] [:a :b] [:a :c] [:c :a]
-               [:a :d] [:b :d] [:c :d]])

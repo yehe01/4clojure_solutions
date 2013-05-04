@@ -1,7 +1,4 @@
-(ns quux.t-4clojure
-  (:use midje.sweet))
-
-(unfinished "hat" "coat" "dog" "cat" "oat" "cot" "hot" "hog" )
+(ns quux.no82)
 
 (defn make-graph [words]
   (into {}

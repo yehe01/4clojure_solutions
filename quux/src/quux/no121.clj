@@ -1,5 +1,4 @@
-(ns quux.t-4clojure
-  (:use midje.sweet))
+(ns quux.no121)
 
 (fn [expression]
   (let [ops {(quote /) /

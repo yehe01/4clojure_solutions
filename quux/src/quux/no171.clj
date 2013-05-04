@@ -1,5 +1,4 @@
-(ns quux.t-4clojure
-  (:use midje.sweet))
+(ns quux.no171)
 
 (defn intervals [s]
   (loop [result []
@@ -13,5 +12,3 @@
         (if (or (empty? cur) (<= (- n (last cur)) 1))
           (recur result (conj cur n) (rest left))
           (recur (conj result (vector (first cur) (last cur))) [n] (rest left)))))))
-
-(intervals [])
