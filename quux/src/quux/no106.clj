@@ -1,5 +1,10 @@
 (ns quux.no106)
 
+(defn gen-children [s e]
+  (let [tmp (conj #{} (vector (* s 2) e) (vector (+ s 2) e))]
+    (if (even? s) (conj tmp (vector (/ s 2) e))
+        tmp)))
+
 (defn new-candidates [candidates]
   (set
    (mapcat (fn [[a b]] (gen-children a b)) candidates)))
@@ -14,20 +19,3 @@
       (do (println (filter (fn [[a b]] (= a b)) candidates))
           d)
       (recur (inc d) (new-candidates candidates)))))
-
-(defn gen-children [s e]
-  (let [tmp (conj #{} (vector (* s 2) e) (vector (+ s 2) e))]
-    (if (even? s) (conj tmp (vector (/ s 2) e))
-        tmp)))
-
-(fn number-maze [s e]
-  (letfn [(gen-children [s e]
-            (let [tmp (conj #{} (vector (* s 2) e) (vector (+ s 2) e))]
-              (if (even? s) (conj tmp (vector (/ s 2) e))
-                  tmp)))]
-    (loop [d 1
-           candidates (conj #{} (vector s e))]
-      (if (not (empty? (filter (fn [[a b]] (= a b)) candidates)))
-        d
-        (recur (inc d) (set
-                        (mapcat (fn [[a b]] (gen-children a b)) candidates)))))))

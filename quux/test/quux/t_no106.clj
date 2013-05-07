@@ -3,7 +3,7 @@
 
 
 (fact "generate new candidates"
-  (new-candidates #{[3 12]}) => #{[6 12] [3 24] [5 12] [3 14] [3 6]})
+  (new-candidates #{[3 12]}) => #{[6 12] [5 12]})
 
 
 (fact "tell if there are pairs whose two items are qual"

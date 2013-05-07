@@ -18,9 +18,3 @@
 
 (defn account-number [parcels]
   (apply str (map digit (digit-parcels parcels))))
-
-(fact
-  (account-number ["    _  _     _  _  _  _  _ "
-                   "  | _| _||_||_ |_   ||_||_|"
-                   "  ||_  _|  | _||_|  ||_| _|"])
-  => "123456789")

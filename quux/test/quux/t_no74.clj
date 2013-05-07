@@ -1,5 +1,5 @@
 (ns quux.t-no74
-  (:use midje.sweet))
+  (:use midje.sweet quux.no74))
 
 (fact "return co-ordinates of places which can result in a immediate win"
   (find-immediate-win :o [[:x :x :o]
