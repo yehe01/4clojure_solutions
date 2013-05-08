@@ -1,8 +1,5 @@
 (ns quux.no89)
 
-(def edges [[:a :b] [:a :b] [:a :c] [:c :a]
-            [:a :d] [:b :d] [:c :d]])
-
 (defn allnodes [edges]
   (set (reduce (fn [result [a b]] (conj result a b)) #{} edges)))
 
@@ -26,9 +23,6 @@
        (accessable-paths (if (some #{[start n]} edges)
                            (delete-one-route [start n] edges)
                            (delete-one-route [n start] edges)) n (conj seen start))))))
-
-(fact "return accessable paths start from one node"
-  (accessable-paths edges 1 []) => (just #{[1 4 3 2] [1 2 3 4]}))
 
 (defn ok? [edges]
   (let [allnodes (set (reduce (fn [result [a b]] (conj result a b)) #{} edges))]
