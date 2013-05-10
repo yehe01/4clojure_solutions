@@ -17,7 +17,8 @@
                  c2 (+ c y)]
            :when (and (>= r2 0) (< r2 nrows)
                       (>= c2 0) (< c2 ncoloums)
-                      (not= x y)
+                      (or (and (= x 0) (not= y 0))
+                          (and (not= x 0) (= y 0)))
                       (not= (get-in m [r2 c2]) \#))]
        [r2 c2]))))
 
@@ -30,7 +31,7 @@
                 (if (empty? ss)
                   false
                   (if (some #{true}
-                             (for [n ss]
-                               (reachable? m n e (conj walked s))))
+                            (for [n ss]
+                              (reachable? m n e (conj walked s))))
                     true false)))))]
-    (reachable? m (pos m \M) (pos m \C) #{[0 0]})))
+    (reachable? m (pos m \M) (pos m \C) #{(pos m \M)})))

@@ -1,7 +1,7 @@
 (ns quux.t-no117
   (:use midje.sweet quux.no117))
 
-(fact "Return a collection of next possible steps from M"
+(fact "Return a collection of next possible steps from given position"
   (steps ["M     "
           "      "
           "      "
@@ -15,11 +15,17 @@
           "    ##"
           "    #C"] [0 0]) => #{[1 0]}
   (steps ["M#    "
+          "#     "
+          "      "
+          "      "
+          "    ##"
+          "    #C"] [0 0]) => #{}
+  (steps ["M#    "
           "      "
           "      "
           "      "
           "    ##"
-          "    #C"] [1 0]) =>)
+          "    #C"] [2 2]) => #{[1 2] [3 2] [2 1] [2 3]})
 
 (fact "Return the position of M"
   (pos ["M     "
@@ -49,13 +55,13 @@
         "    ##"
         "   C #"] \C) => [5 3])
 
-;.;. The right word may be effective, but no word was ever as effective as a
-;.;. rightly timed pause. -- Twain
 (fact "Should return true if C is reachable from M"
   (walk ["M   "
          "  ##"
          "  #C"]) => falsey
-  (walk ["M     "
-         "      "
-         "    ##"
-         "    #C"]) => falsey)
+  (walk  ["#######"
+          "#     #"
+          "#  #  #"
+          "#M # C#"
+          "#######"]) => truthy
+  (walk  ["M   C"]) => truthy)
