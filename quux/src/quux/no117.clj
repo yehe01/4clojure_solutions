@@ -36,8 +36,8 @@
                     true false)))))]
     (reachable? m (pos m \M) (pos m \C) #{(pos m \M)})))
 
-(defn bfs [maze start visited]
-  (loop [visited visited
+(defn bfs [maze start]
+  (loop [visited #{}
          cands #{start}]
     (if (empty? cands)
       visited
@@ -48,5 +48,5 @@
 
 (defn search [m]
   (if (some #{(pos m \C)}
-            (bfs m (pos m \M) #{}))
+            (bfs m (pos m \M)))
     true false))

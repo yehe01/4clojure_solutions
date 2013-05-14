@@ -67,9 +67,9 @@
   (search ["M   "
            "  ##"
            "  #C"]) => falsey
-  (search  ["#######"
-            "#     #"
-            "#  #  #"
-            "#M # C#"
-            "#######"]) => truthy
-  (search  ["M   C"]) => truthy)
+  (search ["#######"
+           "#     #"
+           "#  #  #"
+           "#M # C#"
+           "#######"]) => truthy
+  (search ["M   C"]) => truthy)
