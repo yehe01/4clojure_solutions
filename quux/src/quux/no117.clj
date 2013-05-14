@@ -35,3 +35,18 @@
                               (reachable? m n e (conj walked s))))
                     true false)))))]
     (reachable? m (pos m \M) (pos m \C) #{(pos m \M)})))
+
+(defn bfs [maze start visited]
+  (loop [visited visited
+         cands #{start}]
+    (if (empty? cands)
+      visited
+      (let [cur (first cands)
+            new-cands (concat (remove #(= % cur) cands)
+                              (clojure.set/difference (steps maze cur) visited))]
+        (recur (conj visited cur) new-cands)))))
+
+(defn search [m]
+  (if (some #{(pos m \C)}
+            (bfs m (pos m \M) #{}))
+    true false))
