@@ -20,10 +20,10 @@
             [e w b e]
             [e b w e]
             [e e e e]] [1 1] [1 2]) => falsey
-  (legal? '[[e e e e]
-            [e w b e]
-            [e b w e]
-            [e e e e]] [1 1] [1 0]) => falsey
+  (legal? '[[e e w e]
+            [b b w e]
+            [b w w e]
+            [b w w w]] [3 0] [0 3]) => truthy
   (legal? '[[e e e e]
             [e w b e]
             [e w w e]
@@ -57,7 +57,11 @@
   (legal-moves '[[e e e e]
                  [e w b e]
                  [w w w e]
-                 [e e e e]] [1 2]) => #{[3 2] [3 0] [1 0]})
+                 [e e e e]] [1 2]) => #{[3 2] [3 0] [1 0]}
+  (legal-moves '[[e e w e]
+                 [b b w e]
+                 [b w w e]
+                 [b w w w]] [3 0]) => #{[0 3]})
 
 (fact "returns a map of start. its value a set of the coordinates of the pieces flipped by that move."
   (flipped-moves '[[e e e e]
@@ -74,7 +78,7 @@
                    [e e e e]] [1 2]) => {[3 0] #{[2 1]}, [1 0] #{[1 1]}, [3 2] #{[2 2]}})
 
 (fact "bla"
-  (fli '[[e e e e]
-                 [e w b e]
-                 [w w w e]
-                 [e e e e]] [1 2]))
+  (bla '[[e e w e]
+         [b b w e]
+         [b w w e]
+         [b w w w]] 'b) => {[1 3] #{[1 2]}, [2 3] #{[2 1] [2 2]}})
